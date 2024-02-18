@@ -8,9 +8,10 @@ specifically the ones involving colors.
 
 The script currently prints the 3/4-bit colors to standard out, followed
 by the 8 bit colors.
-<br>
 
-### Required Tools:
+<br><br><br>
+
+## Required Tools:
 - bash
 > If you are on linux or mac, your terminal application probably uses bash by
 default
@@ -21,9 +22,10 @@ Check to see if you are using the **bash** shell
 ```bash
 echo $0
 ```
-<br>
 
 > If the output of the above command is "bash", you are using the bash shell
+
+<br>
 
 ## Installation Instructions
 Clone the repository to your local machine
