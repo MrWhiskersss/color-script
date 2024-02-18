@@ -1,16 +1,19 @@
 #!/bin/bash
 
 clear
+
 #  0 for foreground
 # 10 for background
 mode=0
 rest=0.02
-colr=$(( $mode + 30 ))
+
 l="\u2500"
 b="\u257E"
 d="\u257C"
 p="\u250C"
 q="\u2510"
+
+colr=$(( $mode + 30 ))
 
 printf "\n$p$l$l$d 3 bit / 4 bit $b$l$l$l$l$l$l$l$l$l$l$l$l$q\n"
 
@@ -40,39 +43,35 @@ do
 done
 
 mode=$(( $mode + 38 ))
-colr=0
-line=0
 
 printf "\n"
 printf "\n$p$l$l$d 8 bit $b$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$q\n"
 
-while [ $colr -le 7 ]
+for swch in {0..7}
 do
 	printf " "
-	printf "\033[%d:5:%dm" $mode $colr
-	printf "%0*d" 3 $colr
+	printf "\033[%d:5:%dm" $mode $swch
+	printf "%0*d" 3 $swch
 	printf "\033[m"
 
-	colr=$(( $colr + 1 ))
 	sleep $rest
 done
 
 printf "\n"
 
-while [ $colr -le 15 ]
+for swch in {8..15}
 do
 	printf " "
-	printf "\033[%d:5:%dm" $mode $colr
-	printf "%0*d" 3 $colr
+	printf "\033[%d:5:%dm" $mode $swch
+	printf "%0*d" 3 $swch
 	printf "\033[m"
 
-	colr=$(( $colr + 1 ))
 	sleep $rest
 done
 
 printf "\n\n"
 
-while [ $colr -le 213 ]
+for swch in {16..33} {52..69} {88..105} {124..141} {160..177} {196..213}
 do
 	printf " "
 
@@ -81,64 +80,50 @@ do
 		printf "\033[38:5:15m"
 	fi
 
-	printf "\033[%d:5:%dm" $mode $colr
-	printf "%0*d" 3 $colr
+	printf "\033[%d:5:%dm" $mode $swch
+	printf "%0*d" 3 $swch
 	printf "\033[m"
 
-	line=$(( ($colr - 15) % 18 ))
-
-	if [ $line -eq 0 ]
+	if [ $(( ($swch - 15) % 18 )) -eq 0 ]
 	then
 		printf "\n"
-		colr=$(( $colr + 18 ))
 	fi
 
-	colr=$(( $colr + 1 ))
 	sleep $rest
 done
 
 printf "\n"
 
-colr=34
-
-while [ $colr -le 231 ]
+for swch in {34..51} {70..87} {106..123} {142..159} {178..195} {214..231}
 do
 	printf " "
-	printf "\033[%d:5:%dm" $mode $colr
-	printf "%0*d" 3 $colr
+	printf "\033[%d:5:%dm" $mode $swch
+	printf "%0*d" 3 $swch
 	printf "\033[m"
 
-	line=$(( ($colr - 15) % 18 ))
-
-	if [ $line -eq 0 ]
+	if [ $(( ($swch - 15) % 18 )) -eq 0 ]
 	then
 		printf "\n"
-		colr=$(( $colr + 18 ))
 	fi
 
-	colr=$(( $colr + 1 ))
 	sleep $rest
 done
 
 printf "\n"
-colr=232
 
-while [ $colr -le 255 ]
+for swch in {232..255}
 do
 	printf " "
-	printf "\033[%d:5:%dm" $mode $colr
-	printf "%0*d" 3 $colr
+	printf "\033[%d:5:%dm" $mode $swch
+	printf "%0*d" 3 $swch
 	printf "\033[m"
 
-	line=$(( ($colr - 15) % 8 ))
-
-	if [ $line -eq 0 ]
+	if [ $(( ($swch - 15) % 8 )) -eq 0 ]
 	then
 		printf "\n"
 	fi
 
-	colr=$(( $colr + 1 ))
 	sleep $rest
 done
 
-printf "\n\n"
+printf "\n"
