@@ -11,7 +11,7 @@ by the 8 bit colors.
 
 <br><br><br>
 
-## Required Tools:
+## Required Tools
 - bash
 > If you are on linux or mac, your terminal application probably uses bash by
 default
