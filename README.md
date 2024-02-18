@@ -8,17 +8,21 @@ specifically the ones involving colors.
 
 The script currently prints the 3/4-bit colors to standard out, followed
 by the 8 bit colors.
+<br>
 
 ### Required Tools:
 - bash
 > If you are on linux or mac, your terminal application probably uses bash by
 default
 
+<br>
+
 Check to see if you are using the **bash** shell
 ```bash
 echo $0
 ```
 <br>
+
 > If the output of the above command is "bash", you are using the bash shell
 
 ## Installation Instructions
@@ -72,7 +76,6 @@ script.
 contribute to the script through github, you can remove the repository 
 directory from your system
 ```bash
-cd ../
 sudo rm -r coloring
 ```
 <br>
