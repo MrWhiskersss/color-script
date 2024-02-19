@@ -1,12 +1,35 @@
 #!/bin/bash
 
-clear
-
 #  0 for foreground
 # 10 for background
 mode=0
 rest=0.02
 
+if [ $# -gt 1 ]
+then
+	printf "\033[91merror\033[m: " 1>&2
+	printf "unexpected usage - too many arguments\n" 1>&2
+	exit 1
+fi
+
+case "$1" in
+	"")
+		;;
+	"-h")
+		printf "help flag\n"
+		# TODO create example usage and flag explanation here
+		exit 0
+		;;
+	"-b")
+		mode=10
+		;;
+	*)
+		printf "\033[91merror\033[m: " 1>&2
+		printf "unexpected usage - flag $1 not recognized\n" 1>&2
+		exit 1
+esac
+
+clear
 l="\u2500"
 b="\u257E"
 d="\u257C"
@@ -127,3 +150,4 @@ do
 done
 
 printf "\n"
+exit 0
