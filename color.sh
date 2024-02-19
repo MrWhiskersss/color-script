@@ -120,6 +120,11 @@ printf "\n"
 for swch in {34..51} {70..87} {106..123} {142..159} {178..195} {214..231}
 do
 	printf " "
+
+	if [ $mode -eq 48 ]
+	then
+		printf "\033[38:5:0m"
+	fi
 	printf "\033[%d:5:%dm" $mode $swch
 	printf "%0*d" 3 $swch
 	printf "\033[m"
