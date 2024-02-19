@@ -67,8 +67,10 @@ done
 
 mode=$(( $mode + 38 ))
 
-printf "\n"
-printf "\n$p$l$l$d 8 bit $b$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$q\n"
+printf "\t       ┏┓  ┓     \n"
+printf "\t\t\t\t\t       ┃ ┏┓┃┏┓┏┓┏╸\n"
+printf "$p$l$l$d 8 bit $b$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$l$q"
+printf "\t       ┗┛┗┛┗┗┛╹╺┛\n"
 
 for swch in {0..7}
 do
