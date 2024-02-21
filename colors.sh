@@ -126,24 +126,21 @@ printf "\t\t\t\t\t       ┃ ┏┓┃┏┓┏┓┏╸\n"
 printf "┌──╼ 8 bit ╾────────────────────┐"
 printf "\t       ┗┛┗┛┗┗┛╹╺┛\n"
 
-for swch in {0..7}
-do
+for swch in {0..7}; do
 	print8bit $mode $swch true
 	rest $inst
 done
 
 printf "\n"
 
-for swch in {8..15}
-do
+for swch in {8..15}; do
 	print8bit $mode $swch false
 	rest $inst
 done
 
 printf "\n\n"
 
-for swch in {16..33} {52..69} {88..105} {124..141} {160..177} {196..213}
-do
+for swch in {16..33} {52..69} {88..105} {124..141} {160..177} {196..213}; do
 	print8bit $mode $swch true
 
 	if [ $(( ($swch - 15) % 18 )) -eq 0 ]; then
@@ -155,8 +152,7 @@ done
 
 printf "\n"
 
-for swch in {34..51} {70..87} {106..123} {142..159} {178..195} {214..231}
-do
+for swch in {34..51} {70..87} {106..123} {142..159} {178..195} {214..231}; do
 	print8bit $mode $swch false
 
 	if [ $(( ($swch - 15) % 18 )) -eq 0 ]; then
@@ -168,8 +164,7 @@ done
 
 printf "\n"
 
-for swch in {232..239}
-do
+for swch in {232..239}; do
 	print8bit $mode $swch true
 
 	if [ $(( ($swch - 15) % 8 )) -eq 0 ]; then
@@ -179,8 +174,7 @@ do
 	rest $inst
 done
 
-for swch in {240..255}
-do
+for swch in {240..255}; do
 	print8bit $mode $swch false
 
 	if [ $(( ($swch - 15) % 8 )) -eq 0 ]; then
