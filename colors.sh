@@ -47,6 +47,13 @@ print8bit()
 	printf "\033[m"
 }
 
+rest()
+{
+	if [ "$1" = false ]; then
+		sleep 0.01
+	fi
+}
+
 showHelp()
 {
 	printf "
@@ -64,7 +71,7 @@ showHelp()
 }
 
 mode=$FORE
-rest=0.01
+inst=false
 
 if [ $# -gt 1 ]; then
 	printf "\033[91merror\033[m: " 1>&2
@@ -85,6 +92,9 @@ case "$1" in
 	"-f")
 		mode=0
 		;;
+	"-i")
+		inst=true
+		;;
 	*)
 		printf "\033[91merror\033[m: " 1>&2
 		printf "unexpected usage - flag $1 not recognized\n" 1>&2
@@ -99,7 +109,7 @@ printf "┌──╼ 3 bit / 4 bit ╾────────────┐\n"
 while [ $colr -le $(( $mode + 37 )) ]; do
 	print4bit $mode $colr
 	colr=$(( $colr + 1 ))
-	sleep $rest
+	rest $inst
 done
 
 printf "\n"
@@ -108,7 +118,7 @@ colr=$(( $mode + 90 ))
 while [ $colr -le $(( $mode + 97)) ]; do
 	print4bit $mode $colr
 	colr=$(( $colr + 1 ))
-	sleep $rest
+	rest $inst
 done
 
 printf "\t       ┏┓  ┓     \n"
@@ -119,7 +129,7 @@ printf "\t       ┗┛┗┛┗┗┛╹╺┛\n"
 for swch in {0..7}
 do
 	print8bit $mode $swch true
-	sleep $rest
+	rest $inst
 done
 
 printf "\n"
@@ -127,7 +137,7 @@ printf "\n"
 for swch in {8..15}
 do
 	print8bit $mode $swch false
-	sleep $rest
+	rest $inst
 done
 
 printf "\n\n"
@@ -140,7 +150,7 @@ do
 		printf "\n"
 	fi
 
-	sleep $rest
+	rest $inst
 done
 
 printf "\n"
@@ -153,7 +163,7 @@ do
 		printf "\n"
 	fi
 
-	sleep $rest
+	rest $inst
 done
 
 printf "\n"
@@ -166,7 +176,7 @@ do
 		printf "\n"
 	fi
 
-	sleep $rest
+	rest $inst
 done
 
 for swch in {240..255}
@@ -177,7 +187,7 @@ do
 		printf "\n"
 	fi
 
-	sleep $rest
+	rest $inst
 done
 
 printf "\n"
